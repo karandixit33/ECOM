@@ -9,7 +9,7 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 
 # fallback for local development
 if not DATABASE_URL:
-    DATABASE_URL = "postgresql://postgres:password@localhost:5432/ecommerce"
+    DATABASE_URL = "postgresql://postgres:mypg123@localhost:5432/ecommerce"
 
 # Render sometimes gives postgres:// instead of postgresql://
 if DATABASE_URL.startswith("postgres://"):
