@@ -6,7 +6,7 @@ A full-stack admin panel for an eCommerce system with **FastAPI** (Python) backe
 
 - **Frontend:** HTML, CSS, JavaScript (Vanilla JS, Fetch API)
 - **Backend:** FastAPI (Python)
-- **Database:** SQLite (default) or PostgreSQL
+- **Database:** PostgreSQL
 - **ORM:** SQLAlchemy
 
 ## Project Structure
