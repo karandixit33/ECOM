@@ -7,7 +7,18 @@ load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-engine = create_engine(DATABASE_URL)
+# fallback for local development
+if not DATABASE_URL:
+    DATABASE_URL = "postgresql://postgres:password@localhost:5432/ecommerce"
+
+# Render sometimes gives postgres:// instead of postgresql://
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
+engine = create_engine(
+    DATABASE_URL,
+    pool_pre_ping=True
+)
 
 SessionLocal = sessionmaker(
     autocommit=False,
@@ -18,6 +29,7 @@ SessionLocal = sessionmaker(
 Base = declarative_base()
 
 
+# Dependency for FastAPI
 def get_db():
     db = SessionLocal()
     try:
